@@ -27,7 +27,7 @@
 									<a href="#menu" class="menuToggle"><span>Menu</span></a>
 									<div id="menu">
 										<ul>
-											<li><a href="index.html">Home</a></li>
+											<li><a href="index.html" class="btnAdd">Add To Home Screen</a></li>
 											<li><a href="generic.html">Generic</a></li>
 											<li><a href="elements.html">Elements</a></li>
 											<li><a href="#">Sign Up</a></li>
@@ -173,8 +173,9 @@
 			           .then(function() { console.log("Service Worker Registered"); });
 			}
 
-			
+
 			let deferredPrompt;
+			var btnAdd = $('btnAdd');
 
 			window.addEventListener('beforeinstallprompt', (e) => {
 			  // Prevent Chrome 67 and earlier from automatically showing the prompt
