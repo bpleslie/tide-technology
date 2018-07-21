@@ -1,6 +1,5 @@
 importScripts('cache-polyfill.js');
 
-
 self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('tide-technology').then(function(cache) {
@@ -22,4 +21,15 @@ self.addEventListener('fetch', function(event) {
       return response || fetch(event.request);
     })
   );
+});
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can add to home screen
+  btnAdd.style.display = 'block';
 });
