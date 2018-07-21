@@ -7,7 +7,9 @@ self.addEventListener('install', function(e) {
      return cache.addAll([
        '/',
        '/index.html',
-       '/assets/*',
+       '/assets/css/main.css',
+       '/assets/css/font-awesome.min.css',
+       '/assets/fonts/OpenSans-Bold.ttf',
        '/cache-polyfill.js'
      ]);
    })
