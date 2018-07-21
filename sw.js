@@ -7,7 +7,8 @@ self.addEventListener('install', function(e) {
      return cache.addAll([
        '/',
        '/index.html',
-       '/assets/*'
+       '/assets/*',
+       '/cache-polyfill.js'
      ]);
    })
  );
