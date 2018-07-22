@@ -7,7 +7,7 @@
 <html lang="en">
 	<head>
 		<title>Tide Technology</title>
-		<meta name="Description" content="Serving clients across the United States, Tide Technology is suited to work with companies of all sizes.">
+		<meta name="Description" content="Helping businesses of all sizes improve efficiency through automation, software and hardware solutions.">
 		<meta name="theme-color" content="#2e3842"/>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -88,7 +88,7 @@
 							<div class="image"><img src="images/arduino.jpg" alt="" /></div><div class="content">
 								<h2>Hardware:<br />
 								Bridging the gap.</h2>
-								<p>Whether you need to track assets in a hospital or the number of computers in a lab, hardware solutions often bridge the gap between the physical and digital realms. Advances in technology over the past 10 years have leant themselves to smaller, smarter, more efficient devices that are streamlining business practices daily.</p>
+								<p>Most businesses have real world problems that can't easily be solved by software alone. Custom hardware paired with a custom software application can revolutionize most businesses.</p>
 							</div>
 						</section>
 					</section>
@@ -97,34 +97,25 @@
 					<section id="three" class="wrapper style3 special">
 						<div class="inner">
 							<header class="major">
-								<h2>Accumsan mus tortor nunc aliquet</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-								fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
+								<h2>How can we help?</h2>
+								<p>Our bespoke solutions vary from client to client, but the following are some of our specialties.</p>
 							</header>
 							<ul class="features">
-								<li class="icon fa-paper-plane-o">
-									<h3>Arcu accumsan</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								<li class="icon fa-code">
+									<h3>Web Development</h3>
+									<p>The internet has been transforming business for decades. From e-commerce to blogs to business systems, the web is a great place to start automating business processes.</p>
 								</li>
 								<li class="icon fa-laptop">
-									<h3>Ac Augue Eget</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+									<h3>E-commerce</h3>
+									<p>E-commerce businesses have revolutionized the way that consumers shop and view the shopping experience. Most e-commerce techniques apply to modern digital platforms.</p>
 								</li>
-								<li class="icon fa-code">
-									<h3>Mus Scelerisque</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-								<li class="icon fa-headphones">
-									<h3>Mauris Imperdiet</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-								<li class="icon fa-heart-o">
-									<h3>Aenean Primis</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								<li class="icon fa-paper-plane-o">
+									<h3>SEO</h3>
+									<p>Getting your site to display first in most search engines is not always an easy task. Our implementation of best practices along with modern SEO strategies will give you the best shot at success.</p>
 								</li>
 								<li class="icon fa-flag-o">
-									<h3>Tortor Ut</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+									<h3>Marketing</h3>
+									<p>Business is tough sometimes. And even when things are going great, they could be even better. Whether you want to market online or in the real world, our custom marketing solutions can help grow any business.</p>
 								</li>
 							</ul>
 						</div>
@@ -135,7 +126,7 @@
 						<div class="inner">
 							<header>
 								<h2>Ready to improve?</h2>
-								<p>Even the most profitable businesses have inefficiencies that are holding them back. Get a <b>FREE</b> quote today to find out how Tide Technology can help make <em>your</em> business more efficient!</p>
+								<p>Even the most profitable businesses have inefficiencies that are holding them back. Get a quote today to find out how Tide Technology can help make your business more efficient.</p>
 							</header>
 							<ul class="actions stacked">
 								<li><a href="#" class="button fit primary">Get A Quote</a></li>
@@ -176,34 +167,34 @@
 			}
 
 
-			let deferredPrompt;
-			var btnAdd = $('btnAdd');
+			// let deferredPrompt;
+			// var btnAdd = $('btnAdd');
 
-			window.addEventListener('beforeinstallprompt', (e) => {
-			  // Prevent Chrome 67 and earlier from automatically showing the prompt
-			  e.preventDefault();
-			  // Stash the event so it can be triggered later.
-			  deferredPrompt = e;
-			  // Update UI notify the user they can add to home screen
-			  btnAdd.style.display = 'block';
-			});
+			// window.addEventListener('beforeinstallprompt', (e) => {
+			//   // Prevent Chrome 67 and earlier from automatically showing the prompt
+			//   e.preventDefault();
+			//   // Stash the event so it can be triggered later.
+			//   deferredPrompt = e;
+			//   // Update UI notify the user they can add to home screen
+			//   btnAdd.style.display = 'block';
+			// });
 
-			btnAdd.addEventListener('click', (e) => {
-			  // hide our user interface that shows our A2HS button
-			  btnAdd.style.display = 'none';
-			  // Show the prompt
-			  deferredPrompt.prompt();
-			  // Wait for the user to respond to the prompt
-			  deferredPrompt.userChoice
-			    .then((choiceResult) => {
-			      if (choiceResult.outcome === 'accepted') {
-			        console.log('User accepted the A2HS prompt');
-			      } else {
-			        console.log('User dismissed the A2HS prompt');
-			      }
-			      deferredPrompt = null;
-			    });
-			});
+			// btnAdd.addEventListener('click', (e) => {
+			//   // hide our user interface that shows our A2HS button
+			//   btnAdd.style.display = 'none';
+			//   // Show the prompt
+			//   deferredPrompt.prompt();
+			//   // Wait for the user to respond to the prompt
+			//   deferredPrompt.userChoice
+			//     .then((choiceResult) => {
+			//       if (choiceResult.outcome === 'accepted') {
+			//         console.log('User accepted the A2HS prompt');
+			//       } else {
+			//         console.log('User dismissed the A2HS prompt');
+			//       }
+			//       deferredPrompt = null;
+			//     });
+			// });
 		</script>
 	</body>
 </html>
