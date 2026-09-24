@@ -1,0 +1,126 @@
+---
+import Base from '../../layouts/Base.astro';
+import Pipeline from '../../components/Pipeline.astro';
+import CTA from '../../components/CTA.astro';
+
+const steps = [
+  {
+    title: 'Upload the case file',
+    body: 'Medical records, depositions, employment history, prior reports: hundreds or thousands of pages, in whatever order they arrived.',
+  },
+  {
+    title: 'Agents read and organize',
+    body: 'Casework reviews every page, pulls out the facts that matter, builds timelines and flags conflicts between sources. Each fact links to the page it came from.',
+  },
+  {
+    title: 'You get a first draft',
+    body: 'A structured draft in your format and voice. You review, edit and sign off. Nothing leaves Casework without an expert’s approval.',
+  },
+];
+
+const features = [
+  { title: 'Page-level citations', body: 'Every extracted fact and drafted sentence links to its source, so checking takes seconds.' },
+  { title: 'Conflict detection', body: 'Contradictions between records, testimony and reports are flagged before you start writing.' },
+  { title: 'Your templates, your voice', body: 'Drafts follow your report structure and house style, not a generic format.' },
+  { title: 'Expert sign-off', body: 'Every output is reviewed and approved by a professional before it goes anywhere.' },
+  { title: 'Built for HIPAA', body: 'Protected health information is handled with encryption, access controls and a full audit trail.' },
+  { title: 'Private model options', body: 'Open-weight models in private infrastructure for sensitive work; frontier models where you allow them.' },
+];
+---
+
+<Base
+  title="Casework"
+  description="Casework by Tide Technology Solutions: AI agents that review case files and prepare cited report drafts for vocational consultants and law firms, saving hours on every case."
+>
+  <section class="relative overflow-hidden">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="container-page relative pt-20 pb-16 sm:pt-28">
+      <p class="eyebrow">Casework · by Tide Technology Solutions</p>
+      <h1 class="mt-5 max-w-4xl text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
+        Case files read.<br />
+        <span class="italic text-accent">First drafts ready.</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-muted">
+        Casework is an agentic AI system for document review and report preparation. It reads the whole case file,
+        organizes the facts with citations and drafts the report, so vocational consultants and legal teams get hours
+        back on every case.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contact" class="btn btn-primary">Book a Casework demo</a>
+        <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+    <div class="container-page relative pb-8">
+      <Pipeline />
+    </div>
+  </section>
+
+  <section id="how-it-works" class="container-page mt-24 scroll-mt-24">
+    <p class="eyebrow">How it works</p>
+    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">From case file to first draft, with you in control.</h2>
+    <ol class="mt-12 grid gap-6 md:grid-cols-3">
+      {steps.map((s, i) => (
+        <li class="rounded-2xl border border-line bg-surface p-6">
+          <span class="font-serif text-3xl text-accent">0{i + 1}</span>
+          <h3 class="mt-4 text-xl">{s.title}</h3>
+          <p class="mt-2 text-muted">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="container-page mt-24">
+    <p class="eyebrow">Who it’s for</p>
+    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">Built for work that starts with a stack of records.</h2>
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      <a href="/casework/vocational-consulting" class="group rounded-3xl border border-line bg-surface p-8 transition-colors hover:border-accent">
+        <h3 class="text-2xl">Vocational consultants</h3>
+        <p class="mt-3 text-muted">
+          Records review, work history, restrictions and transferable skills, organized and drafted so you can focus on
+          the vocational opinion.
+        </p>
+        <span class="mt-6 inline-block text-sm font-semibold text-accent">Casework for vocational consulting <span class="inline-block transition-transform group-hover:translate-x-1">→</span></span>
+      </a>
+      <a href="/casework/law-firms" class="group rounded-3xl border border-line bg-surface p-8 transition-colors hover:border-accent">
+        <h3 class="text-2xl">Law firms</h3>
+        <p class="mt-3 text-muted">
+          Medical chronologies, deposition summaries and case-fact memos from discovery productions, with every point
+          cited back to the record.
+        </p>
+        <span class="mt-6 inline-block text-sm font-semibold text-accent">Casework for law firms <span class="inline-block transition-transform group-hover:translate-x-1">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="container-page mt-24">
+    <p class="eyebrow">Features</p>
+    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">Fast enough to matter. Careful enough to trust.</h2>
+    <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map((f) => (
+        <div class="border-t border-line pt-6">
+          <h3 class="text-xl">{f.title}</h3>
+          <p class="mt-2 text-muted">{f.body}</p>
+        </div>
+      ))}
+    </div>
+    <a href="/security" class="mt-10 inline-block text-sm font-semibold text-accent">Read about security &amp; compliance →</a>
+  </section>
+
+  <CTA
+    heading="See Casework on one of your cases"
+    body="Book a 30-minute walkthrough. Bring a sample file and we’ll show you what the first draft looks like."
+    cta="Book a Casework demo"
+  />
+</Base>
+
+<style>
+  .wash {
+    position: absolute;
+    inset: -20% -10% auto;
+    height: 80%;
+    background:
+      radial-gradient(ellipse 50% 60% at 80% 20%, var(--accent-soft), transparent 70%),
+      radial-gradient(ellipse 40% 50% at 10% 0%, var(--accent-soft), transparent 70%);
+    opacity: 0.9;
+  }
+</style>

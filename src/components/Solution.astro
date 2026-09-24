@@ -25,8 +25,9 @@ const p = Astro.props;
     <h1 class="mt-5 max-w-4xl text-5xl leading-[1.05] sm:text-6xl">{p.heading}</h1>
     <p class="mt-6 max-w-2xl text-lg text-muted">{p.intro}</p>
     <div class="mt-8 flex flex-wrap gap-3">
-      <a href="/contact" class="btn btn-primary">Book a demo</a>
-      <a href="/security" class="btn btn-ghost">Security &amp; compliance</a>
+      <a href="/contact" class="btn btn-primary">Book a Casework demo</a>
+      <a href="/casework" class="btn btn-ghost">About Casework</a>
+
     </div>
     <div class="mt-10">
       <p class="text-sm font-semibold">{p.contextsLabel}</p>
@@ -51,18 +52,18 @@ const p = Astro.props;
 
   <section class="container-page mt-24 grid gap-6 md:grid-cols-2">
     <div class="rounded-3xl border border-line p-8">
-      <p class="text-sm font-semibold text-muted">Without Tide</p>
+      <p class="text-sm font-semibold text-muted">Without Casework</p>
       <ul class="mt-5 space-y-3">
         {p.before.map((b) => <li class="flex gap-3"><span class="text-muted" aria-hidden="true">–</span><span>{b}</span></li>)}
       </ul>
     </div>
     <div class="rounded-3xl border border-accent bg-accent-soft/60 p-8">
-      <p class="text-sm font-semibold text-accent">With Tide</p>
+      <p class="text-sm font-semibold text-accent">With Casework</p>
       <ul class="mt-5 space-y-3">
         {p.after.map((a) => <li class="flex gap-3"><span class="text-accent" aria-hidden="true">✓</span><span>{a}</span></li>)}
       </ul>
     </div>
   </section>
 
-  <CTA />
+  <CTA heading="See Casework on one of your cases" body="Book a 30-minute walkthrough. Bring a sample file and we’ll show you what the first draft looks like." cta="Book a Casework demo" />
 </Base>

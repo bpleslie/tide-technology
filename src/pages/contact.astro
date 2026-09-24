@@ -2,27 +2,32 @@
 import Base from '../layouts/Base.astro';
 
 const email = 'brad@tide-technology.com';
-const subject = encodeURIComponent('Tide demo request');
-const body = encodeURIComponent('Name:\nFirm:\nType of work (vocational consulting, law firm, other):\nRoughly how many cases per month:\n\n');
+const mail = (subject: string, body: string) =>
+  `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+const casework = mail(
+  'Casework demo request',
+  'Name:\nFirm:\nType of work (vocational consulting, law firm, other):\nRoughly how many cases per month:\n\n',
+);
+const custom = mail('Custom workflow inquiry', 'Name:\nCompany:\nThe workflow or documents you’d like to automate:\n\n');
 ---
 
-<Base
-  title="Book a demo"
-  description="Book a walkthrough of Tide Technology Solutions’s agentic document review and report preparation."
->
+<Base title="Contact" description="Get in touch with Tide Technology Solutions about Casework or a custom agentic AI workflow.">
   <section class="container-page pt-20 sm:pt-28 grid gap-12 md:grid-cols-2">
     <div>
       <p class="eyebrow">Contact</p>
-      <h1 class="mt-5 text-5xl leading-[1.05] sm:text-6xl">Let’s look at one of your cases.</h1>
+      <h1 class="mt-5 text-5xl leading-[1.05] sm:text-6xl">Let’s talk about the work.</h1>
       <p class="mt-6 max-w-xl text-lg text-muted">
-        Tell us about your practice and the reports you prepare. We’ll set up a 30-minute walkthrough and show you
-        what a first draft looks like for work like yours.
+        Whether you want to see Casework on one of your cases or explore a custom workflow, tell us a little about your
+        team and the documents you work with. You’ll hear back within one business day.
       </p>
     </div>
     <div class="rounded-3xl border border-line bg-surface p-8">
-      <h2 class="text-2xl">Get in touch</h2>
-      <p class="mt-2 text-muted">Email Brad directly. You’ll hear back within one business day.</p>
-      <a href={`mailto:${email}?subject=${subject}&body=${body}`} class="btn btn-primary mt-6 w-full">Request a demo</a>
+      <h2 class="text-2xl">What can we help with?</h2>
+      <div class="mt-6 grid gap-3">
+        <a href={casework} class="btn btn-primary w-full">Book a Casework demo</a>
+        <a href={custom} class="btn btn-ghost w-full">Discuss a custom workflow</a>
+      </div>
       <p class="mt-4 text-center text-sm text-muted">or write to <a class="text-accent font-medium" href={`mailto:${email}`}>{email}</a></p>
       <hr class="my-8 border-line" />
       <p class="text-sm text-muted">
