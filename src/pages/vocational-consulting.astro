@@ -1,0 +1,33 @@
+---
+import Solution from '../components/Solution.astro';
+---
+
+<Solution
+  title="Vocational consulting"
+  description="AI agents that review medical records, depositions and work histories and prepare vocational report drafts, so consultants spend their time on the opinion, not the paperwork."
+  eyebrow="For vocational consultants"
+  heading="Spend your hours on the opinion, not the records review."
+  intro="Tide’s agents read the full case file, organize the facts a vocational evaluation depends on and prepare a first draft in your report format. You bring the analysis, the judgment and the signature."
+  contextsLabel="Built for case work in"
+  contexts={['Workers’ compensation', 'Personal injury', 'Long-term disability', 'Social Security disability', 'Employment litigation', 'Family law']}
+  outputs={[
+    { title: 'Records review summary', body: 'Diagnoses, treatment history and providers, organized chronologically with page citations.' },
+    { title: 'Restrictions & limitations', body: 'Every work restriction and functional limitation across sources, with conflicts flagged.' },
+    { title: 'Work & education history', body: 'Jobs, dates, duties, earnings and education pulled from depositions, forms and records.' },
+    { title: 'Transferable skills inputs', body: 'Past work organized for your transferable skills analysis, ready for your review.' },
+    { title: 'Draft vocational report', body: 'Background and records sections drafted in your template and voice, with every fact cited.' },
+    { title: 'Questions for the file', body: 'Gaps, inconsistencies and missing records surfaced before you start writing.' },
+  ]}
+  before={[
+    'Hours paging through records before the real work starts',
+    'Facts copied by hand from PDFs into report templates',
+    'Conflicts between sources found late, or not at all',
+    'Report turnaround limited by reading time',
+  ]}
+  after={[
+    'The file is read and organized when you open the case',
+    'Background sections arrive drafted, with citations',
+    'Conflicts and gaps flagged up front',
+    'More cases per consultant without cutting corners',
+  ]}
+/>

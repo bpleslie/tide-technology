@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+
+const email = 'brad@tide-technology.com';
+const subject = encodeURIComponent('Tide demo request');
+const body = encodeURIComponent('Name:\nFirm:\nType of work (vocational consulting, law firm, other):\nRoughly how many cases per month:\n\n');
+---
+
+<Base
+  title="Book a demo"
+  description="Book a walkthrough of Tide Technology’s agentic document review and report preparation."
+>
+  <section class="container-page pt-20 sm:pt-28 grid gap-12 md:grid-cols-2">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h1 class="mt-5 text-5xl leading-[1.05] sm:text-6xl">Let’s look at one of your cases.</h1>
+      <p class="mt-6 max-w-xl text-lg text-muted">
+        Tell us about your practice and the reports you prepare. We’ll set up a 30-minute walkthrough and show you
+        what a first draft looks like for work like yours.
+      </p>
+    </div>
+    <div class="rounded-3xl border border-line bg-surface p-8">
+      <h2 class="text-2xl">Get in touch</h2>
+      <p class="mt-2 text-muted">Email Brad directly. You’ll hear back within one business day.</p>
+      <a href={`mailto:${email}?subject=${subject}&body=${body}`} class="btn btn-primary mt-6 w-full">Request a demo</a>
+      <p class="mt-4 text-center text-sm text-muted">or write to <a class="text-accent font-medium" href={`mailto:${email}`}>{email}</a></p>
+      <hr class="my-8 border-line" />
+      <p class="text-sm text-muted">
+        Please don’t send case documents or PHI by email. We’ll set up a secure way to share sample files.
+      </p>
+    </div>
+  </section>
+</Base>

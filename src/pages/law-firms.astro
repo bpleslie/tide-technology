@@ -1,0 +1,33 @@
+---
+import Solution from '../components/Solution.astro';
+---
+
+<Solution
+  title="Law firms"
+  description="AI agents that review medical records, depositions and discovery and prepare cited chronologies, summaries and draft work product for attorney review."
+  eyebrow="For law firms"
+  heading="Know the record faster, with every point cited."
+  intro="Tide’s agents review medical records, transcripts and document productions and prepare cited chronologies, summaries and draft work product. Attorneys and staff review, refine and decide."
+  contextsLabel="Built for practices like"
+  contexts={['Personal injury', 'Workers’ compensation', 'Medical malpractice', 'Employment', 'Insurance defense', 'Disability claims']}
+  outputs={[
+    { title: 'Medical chronologies', body: 'Treatment timelines across every provider, with page-level citations and gaps in care flagged.' },
+    { title: 'Deposition summaries', body: 'Page-line summaries and topic indexes, so key testimony is easy to find.' },
+    { title: 'Case-fact memos', body: 'The facts that matter to your theory of the case, organized and sourced.' },
+    { title: 'Inconsistency reports', body: 'Contradictions between testimony, records and expert reports surfaced for review.' },
+    { title: 'Draft work product', body: 'First drafts of demand letters and report sections in your firm’s format, ready for attorney edits.' },
+    { title: 'Expert file prep', body: 'Organized, cited case packets for retained experts, including vocational consultants.' },
+  ]}
+  before={[
+    'Paralegal hours spent building chronologies by hand',
+    'Key facts buried in thousands of pages of production',
+    'Inconsistencies discovered at deposition, not before',
+    'Case capacity limited by review time',
+  ]}
+  after={[
+    'Chronologies and summaries ready for review in a fraction of the time',
+    'Every fact linked to the page it came from',
+    'Contradictions flagged early',
+    'Staff time moves from reading to strategy',
+  ]}
+/>
