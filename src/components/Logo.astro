@@ -1,10 +1,7 @@
 ---
+import mark from '../assets/tts-mark.json';
 ---
-<span class="inline-flex items-center gap-2.5 font-semibold tracking-tight text-ink">
-  <svg viewBox="0 0 32 32" class="h-7 w-7" aria-hidden="true">
-    <rect width="32" height="32" rx="8" fill="#0b3b44" />
-    <path d="M5 20c3.5 0 4.5-6 9-6 3 0 3.5 3 6 3 2 0 3-1.5 3-3.5 1.6.9 4 3.2 4 6.5H5z" fill="#5eead4" />
-    <path d="M5 24h22" stroke="#99f6e4" stroke-width="2" stroke-linecap="round" />
-  </svg>
-  <span>Tide Technology</span>
+<span class="inline-flex items-center gap-3 text-ink">
+  <svg viewBox={mark.viewBox} class="h-6 w-auto" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d={mark.d} /></svg>
+  <span class="text-[0.95rem] font-semibold leading-tight tracking-tight">Tide Technology Solutions</span>
 </span>

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const fullTitle = title === 'Tide Technology' ? title : `${title} | Tide Technology`;
+const fullTitle = title === 'Tide Technology Solutions' ? title : `${title} | Tide Technology Solutions`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -23,15 +23,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#0b3b44" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Tide Technology" />
+    <meta property="og:site_name" content="Tide Technology Solutions" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,7 +44,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'Tide Technology',
+      name: 'Tide Technology Solutions',
+      alternateName: 'Tide Technology',
+      logo: 'https://www.tide-technology.com/tts-logo.svg',
       url: 'https://www.tide-technology.com',
       email: 'brad@tide-technology.com',
       description: 'Agentic document review and report preparation for vocational consultants and law firms.',
