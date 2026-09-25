@@ -62,38 +62,5 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer />
-    <script is:inline>
-      // Temporary layout diagnostics, shown only with ?debug in the URL.
-      if (location.search.includes('debug')) {
-        const box = document.createElement('pre');
-        box.id = 'tt-debug';
-        box.style.cssText = 'position:fixed;left:8px;right:8px;top:72px;z-index:99;margin:0;padding:8px;font:11px/1.35 ui-monospace,monospace;white-space:pre-wrap;background:#fffbe6;color:#000;border:2px solid #d00;border-radius:8px;max-height:60vh;overflow:auto';
-        document.body.append(box);
-        const px = (v) => { const d = document.createElement('div'); d.style.cssText = 'position:absolute;top:0;height:' + v; document.body.append(d); const h = d.offsetHeight; d.remove(); return h; };
-        const report = () => {
-          const de = document.documentElement, f = document.querySelector('footer');
-          const fb = Math.round(f.getBoundingClientRect().bottom + scrollY);
-          const vv = window.visualViewport;
-          const beyond = [];
-          for (const el of document.querySelectorAll('body *')) {
-            if (el === box || box.contains(el)) continue;
-            const r = el.getBoundingClientRect();
-            if (r.height && (r.bottom + scrollY > fb + 1 || r.right > innerWidth + 1)) beyond.push(el.tagName + '.' + String(el.className?.baseVal ?? el.className).slice(0, 30) + ' b=' + Math.round(r.bottom + scrollY) + ' r=' + Math.round(r.right));
-          }
-          const after = []; let n = f.nextElementSibling; while (n) { if (n !== box) after.push(n.tagName + (n.id ? '#' + n.id : '')); n = n.nextElementSibling; }
-          box.textContent = [
-            'docScrollH=' + de.scrollHeight + ' docClientH=' + de.clientHeight + ' bodyH=' + Math.round(document.body.getBoundingClientRect().height) + ' footerBottom=' + fb,
-            'scrollY=' + Math.round(scrollY) + ' scrollY+innerH=' + Math.round(scrollY + innerHeight) + ' maxScroll=' + (de.scrollHeight - innerHeight),
-            'inner=' + innerWidth + 'x' + innerHeight + ' vv=' + (vv ? Math.round(vv.width) + 'x' + Math.round(vv.height) + ' scale=' + vv.scale.toFixed(2) + ' offTop=' + Math.round(vv.offsetTop) : 'n/a') + ' dpr=' + devicePixelRatio,
-            'svh=' + px('100svh') + ' dvh=' + px('100dvh') + ' lvh=' + px('100lvh') + ' vh=' + px('100vh'),
-            'rootFont=' + getComputedStyle(de).fontSize + ' bodyFont=' + getComputedStyle(document.body).fontSize + ' footerTextFont=' + getComputedStyle(f.querySelector('p.text-sm')).fontSize,
-            'beyond footer: ' + (beyond.slice(0, 6).join(' | ') || 'none'),
-            'after footer: ' + (after.join(', ') || 'none'),
-            navigator.userAgent,
-          ].join('\n');
-        };
-        addEventListener('load', report); addEventListener('scroll', report, { passive: true }); addEventListener('resize', report); setTimeout(report, 1500);
-      }
-    </script>
   </body>
 </html>
