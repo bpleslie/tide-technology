@@ -14,7 +14,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
 
 <header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href="/" aria-label="Tide Technology Solutions home"><Logo /></a>
+    <a href="/" class="flex items-center" aria-label="Tide Technology Solutions home"><Logo /></a>
 
     <nav class="hidden lg:flex items-center gap-7 text-sm" aria-label="Main">
       {links.map((l) => (
