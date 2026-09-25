@@ -1,4 +1,4 @@
-# Tide Technology
+# Tide Technology Solutions
 
 Marketing site for [www.tide-technology.com](https://www.tide-technology.com), built with Astro and Tailwind CSS.
 
