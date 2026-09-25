@@ -2,65 +2,161 @@
 import Base from '../layouts/Base.astro';
 import CTA from '../components/CTA.astro';
 
-const sections = [
+const layers = [
   {
-    title: 'Built for HIPAA',
-    body: 'Case files are full of protected health information. Casework and our custom workflows are designed to meet HIPAA requirements for handling PHI, and we work with clients on Business Associate Agreements.',
+    id: 'harness',
+    eyebrow: 'Layer 1',
+    title: 'The agent harness',
+    intro: 'The harness is the software around the model that decides what an agent can see, which tools it can use and when a person has to step in. It’s where most agentic risk is controlled.',
+    items: [
+      {
+        title: 'Least-privilege access',
+        body: 'Each agent gets only the tools, systems and data its workflow needs, with narrowly scoped credentials. Nothing more.',
+      },
+      {
+        title: 'Approval gates',
+        body: 'High-impact actions such as sending messages, changing records, moving money or deleting data wait for explicit human approval.',
+      },
+      {
+        title: 'Prompt-injection defenses',
+        body: 'Content from emails, files and the web is treated as data, never as instructions. Untrusted input is isolated from the agent’s instructions and permissions.',
+      },
+      {
+        title: 'Sandboxed execution',
+        body: 'Agents run in isolated environments with allowlisted network access, so a misbehaving step can’t reach systems it shouldn’t.',
+      },
+      {
+        title: 'Validated outputs',
+        body: 'Agent outputs are checked against schemas and business rules before anything is written to your systems.',
+      },
+      {
+        title: 'Limits & kill switch',
+        body: 'Rate, spend and action limits on every workflow, plus the ability to pause any agent instantly.',
+      },
+    ],
   },
   {
-    title: 'Your data stays yours',
-    body: 'Client documents are used only to do your work. They are never used to train models, and they are never shared with other clients.',
+    id: 'models',
+    eyebrow: 'Layer 2',
+    title: 'The models',
+    intro: 'We choose models per task, balancing capability, cost and how sensitive the data is, and we test them before they touch your work.',
+    items: [
+      {
+        title: 'Open-weight models, privately hosted',
+        body: 'For the most sensitive workloads, we run open-weight models in isolated, private infrastructure, so data never leaves environments under our control.',
+      },
+      {
+        title: 'Frontier models, on your terms',
+        body: 'Where frontier models add real value, we use them through enterprise agreements with zero data retention where available. You decide which workloads can use them.',
+      },
+      {
+        title: 'Never trained on your data',
+        body: 'Your data is used only to do your work. It is never used to train models and never shared with other clients.',
+      },
+      {
+        title: 'Evaluated & red-teamed',
+        body: 'Every workflow is tested against real examples and adversarial cases before launch, and re-tested whenever a model or prompt changes.',
+      },
+    ],
   },
   {
-    title: 'Open-weight models in private infrastructure',
-    body: 'For the most sensitive processing, we run open-weight models in isolated, private environments, so documents never leave infrastructure under our control.',
-  },
-  {
-    title: 'Frontier models, on your terms',
-    body: 'Where frontier models add real value, we use them through enterprise agreements that match your data policies. You decide which workloads can use them.',
-  },
-  {
-    title: 'Encryption and access control',
-    body: 'Data is encrypted in transit and at rest. Access is role-based and limited to the people working the case.',
-  },
-  {
-    title: 'Full audit trail',
-    body: 'Every document, extraction, draft and approval is logged: who did what, when and based on which source pages.',
+    id: 'data',
+    eyebrow: 'Layer 3',
+    title: 'Your data',
+    intro: 'Standard security controls, applied consistently across every product and custom workflow.',
+    items: [
+      {
+        title: 'Encryption & access control',
+        body: 'Data is encrypted in transit and at rest. Access is role-based and limited to the people who need it.',
+      },
+      {
+        title: 'Secrets kept from the model',
+        body: 'Passwords and API keys live in a secure vault and are applied at the tool layer. Models never see them.',
+      },
+      {
+        title: 'Client isolation',
+        body: 'Each client’s data, credentials and agents are kept separate from every other client’s.',
+      },
+      {
+        title: 'Full audit trail',
+        body: 'Every model call, tool action and approval is logged: what happened, when, who approved it and what it was based on.',
+      },
+    ],
   },
 ];
 ---
 
 <Base
   title="Security & compliance"
-  description="How Tide Technology Solutions protects case files: built for HIPAA, open-weight models in private infrastructure, encryption, access controls, audit trails and expert review."
+  description="How Tide Technology Solutions secures agentic AI: least-privilege agent harnesses, approval gates, prompt-injection defenses, private and frontier model controls, encryption, audit trails and HIPAA support for case files."
 >
   <section class="container-page pt-20 sm:pt-28">
     <p class="eyebrow">Security &amp; compliance</p>
-    <h1 class="mt-5 max-w-4xl text-5xl leading-[1.05] sm:text-6xl">Built for files you can’t afford to mishandle.</h1>
+    <h1 class="mt-5 max-w-4xl text-5xl leading-[1.05] sm:text-6xl">Security built into every agent.</h1>
     <p class="mt-6 max-w-2xl text-lg text-muted">
-      Medical records, legal files and personal histories demand more than a chatbot. Everything we build is designed around privacy,
-      control and accountability from the ground up.
+      Agentic AI doesn’t just answer questions. It takes actions in your systems. So we secure the whole stack: the
+      harness that controls what agents can do, the models behind them and the data they touch. These practices are
+      built into every workflow and product we ship.
     </p>
+    <nav class="mt-10 grid gap-3 sm:grid-cols-3" aria-label="Security layers">
+      {layers.map((l) => (
+        <a href={`#${l.id}`} class="group rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-accent">
+          <p class="eyebrow">{l.eyebrow}</p>
+          <p class="mt-2 font-serif text-xl">{l.title} <span class="inline-block text-accent transition-transform group-hover:translate-y-0.5">↓</span></p>
+        </a>
+      ))}
+    </nav>
   </section>
 
-  <section class="container-page mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {sections.map((s) => (
-      <div class="rounded-2xl border border-line bg-surface p-6">
-        <h2 class="text-xl">{s.title}</h2>
-        <p class="mt-2 text-sm text-muted">{s.body}</p>
+  {layers.map((l) => (
+    <section id={l.id} class="container-page mt-24 scroll-mt-24">
+      <div class="grid gap-10 md:grid-cols-2 md:items-end">
+        <div>
+          <p class="eyebrow">{l.eyebrow}</p>
+          <h2 class="mt-4 text-4xl sm:text-5xl">{l.title}</h2>
+        </div>
+        <p class="text-lg text-muted">{l.intro}</p>
       </div>
-    ))}
+      <div class:list={['mt-12 grid gap-6 sm:grid-cols-2', l.items.length > 4 ? 'lg:grid-cols-3' : 'lg:grid-cols-4']}>
+        {l.items.map((s) => (
+          <div class="rounded-2xl border border-line bg-surface p-6">
+            <h3 class="text-xl">{s.title}</h3>
+            <p class="mt-2 text-sm text-muted">{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section id="hipaa" class="container-page mt-24 scroll-mt-24">
+    <div class="grid gap-10 rounded-3xl border border-line bg-surface p-8 sm:p-12 md:grid-cols-2">
+      <div>
+        <p class="eyebrow">Regulated data &amp; case files</p>
+        <h2 class="mt-4 text-4xl">Built for HIPAA.</h2>
+      </div>
+      <div class="space-y-4 text-muted">
+        <p>
+          Case files are full of medical records, legal documents and personal histories. Casework and any custom
+          workflow that handles protected health information are designed to meet HIPAA requirements for handling PHI,
+          and we work with clients on Business Associate Agreements.
+        </p>
+        <p>
+          PHI is only processed in approved environments, access follows the minimum-necessary standard, and every view
+          and action on a case file is recorded in the audit trail.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="container-page mt-24 grid gap-10 md:grid-cols-2 md:items-center">
     <div>
       <p class="eyebrow">Human in the loop</p>
-      <h2 class="mt-4 text-4xl">AI prepares. Professionals decide.</h2>
+      <h2 class="mt-4 text-4xl">AI does the work. People make the calls.</h2>
     </div>
     <p class="text-lg text-muted">
-      Our systems never issue an opinion or send a report on their own. Agents do the reading, organizing and drafting; a
-      qualified expert reviews every output, checks the citations and makes the call. Accountability stays where it
-      belongs.
+      Our agents never take a consequential action on their own. They prepare, draft and recommend, and a person on your
+      team approves. In Casework, a qualified professional reviews every output, checks the citations and signs off.
+      Accountability stays where it belongs.
     </p>
   </section>
 
