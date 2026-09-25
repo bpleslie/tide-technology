@@ -2,80 +2,145 @@
 import Base from '../layouts/Base.astro';
 import CTA from '../components/CTA.astro';
 
-const trust = ['Human in the loop', 'Cited, verifiable output', 'Built for HIPAA', 'Open-weight & frontier models'];
+const trust = ['Built around your tools', 'You approve what matters', 'Secure & private by design', 'Measured in hours saved'];
 
-const reading = ['Reviews every page', 'Extracts and cites the facts', 'Flags conflicts and gaps', 'Drafts the first version'];
-const reasoning = ['Weighs the evidence', 'Forms the opinion', 'Edits, approves and signs'];
+// Illustrative agent run for the hero. Fictional sample data.
+const run = [
+  { label: 'New lead from your website', detail: 'Contact form · 2 minutes ago', state: 'done' },
+  { label: 'Researched the company', detail: 'Industry, size, location, recent news', state: 'done' },
+  { label: 'Updated your CRM', detail: 'Created contact and deal, assigned owner', state: 'done' },
+  { label: 'Spotted an existing account', detail: 'Matched a past customer from 2024', state: 'flag' },
+  { label: 'Drafted a follow-up email', detail: 'Waiting for your approval', state: 'wait' },
+];
 
 const principles = [
   {
-    title: 'Cited, not guessed',
-    body: 'Everything our agents produce traces back to its source, so experts can verify it in seconds instead of redoing the work.',
+    title: 'Built around how you work',
+    body: 'We fit agents into your existing tools and processes instead of asking your team to change everything.',
   },
   {
-    title: 'Experts stay in charge',
-    body: 'Our systems prepare; professionals decide. Opinions, conclusions and signatures stay with the people accountable for them.',
+    title: 'You stay in control',
+    body: 'Agents do the legwork, and your team approves anything that matters. You decide where that line is.',
+  },
+  {
+    title: 'Transparent by default',
+    body: 'Every action an agent takes is logged and traceable, so you can always see what it did and why.',
   },
   {
     title: 'The right model for the job',
-    body: 'Open-weight models in private infrastructure for sensitive work, frontier models where they add real value, always under your data policies.',
+    body: 'Open-weight models in private infrastructure for sensitive data, frontier models where they add real value.',
   },
   {
     title: 'Secure by design',
-    body: 'Built for HIPAA and confidential client data: encryption in transit and at rest, access controls and a complete audit trail.',
+    body: 'Encryption, access controls and audit trails as standard, with support for regulated and confidential data.',
+  },
+  {
+    title: 'Measured in results',
+    body: 'We track hours saved and turnaround time from day one, so you know exactly what the investment returns.',
   },
 ];
 
-const approach = [
-  { title: 'Map the workflow', body: 'We sit with your team, follow a real case end to end and find where expert time goes to reading and rework.' },
-  { title: 'Build the agents', body: 'We design agents around your documents, templates and systems, and test them against your past work.' },
-  { title: 'Run it with your experts', body: 'Your team reviews every output. We measure time saved, refine the workflow and keep it running.' },
+const useCases = [
+  {
+    title: 'Data entry & system updates',
+    body: 'Agents move information between your email, spreadsheets, CRM and back-office systems so nobody has to copy and paste.',
+  },
+  {
+    title: 'Intake & triage',
+    body: 'New requests, leads and tickets are sorted, summarized and routed to the right person with the context they need.',
+  },
+  {
+    title: 'Sales & customer follow-up',
+    body: 'Leads researched, records updated and follow-ups drafted the moment something happens, not days later.',
+  },
+  {
+    title: 'Research & briefings',
+    body: 'Market, customer and competitor information gathered and summarized into briefs your team can act on.',
+  },
+  {
+    title: 'Reporting',
+    body: 'Recurring reports assembled from your data and written up in your format, ready for a quick look instead of a lost afternoon.',
+  },
+  {
+    title: 'Operations & scheduling',
+    body: 'Reminders, status updates, handoffs and scheduling handled automatically, with people looped in when needed.',
+  },
 ];
 
-const examples = ['Medical records review', 'Claims files', 'Compliance reviews', 'Intake & triage', 'Contract review', 'Report drafting'];
+const compare = {
+  old: [
+    'Follows fixed rules, and breaks when the input changes',
+    'Needs perfectly structured data',
+    'Handles one step of a process',
+    'Fails silently or stops',
+  ],
+  agentic: [
+    'Understands context and adapts to real-world messiness',
+    'Works with emails, free text and scattered data',
+    'Carries a task across multiple steps and systems',
+    'Knows when it’s unsure and hands off to a person',
+  ],
+};
+
+const process = [
+  { title: 'Find the hours', body: 'We map how work actually gets done and pinpoint where your team loses time to repetitive tasks.' },
+  { title: 'Design the workflow', body: 'We decide what the agents handle, where people step in and how it fits your existing tools.' },
+  { title: 'Build & integrate', body: 'We build the agents, connect them to your systems and test them on real examples from your business.' },
+  { title: 'Run & improve', body: 'We launch with your team, measure time saved and keep refining. Then we move on to the next workflow.' },
+];
 ---
 
 <Base
   title="Tide Technology Solutions"
-  description="AI does the reading. Experts do the reasoning. Tide Technology Solutions builds agentic AI products and custom workflows for document-heavy professional work."
+  description="Tide Technology Solutions designs and builds custom agentic AI workflows that take repetitive work off your team’s plate, so your business runs more efficiently."
 >
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <div class="hero-wash" aria-hidden="true"></div>
-    <div class="container-page relative grid gap-14 pt-20 pb-8 sm:pt-28 lg:grid-cols-[1.25fr_1fr] lg:items-center">
+    <div class="container-page relative grid gap-14 pt-20 pb-8 sm:pt-28 lg:grid-cols-[1.2fr_1fr] lg:items-center">
       <div>
-        <p class="eyebrow">Agentic AI for expert work</p>
+        <p class="eyebrow">Custom agentic AI workflows</p>
         <h1 class="mt-5 text-5xl leading-[1.05] sm:text-6xl lg:text-[4.25rem]">
-          AI does the reading.<br />
-          <span class="italic text-accent">Experts do the reasoning.</span>
+          Put AI agents to work on the <span class="italic text-accent">busywork.</span>
         </h1>
         <p class="mt-6 max-w-xl text-lg text-muted">
-          Tide Technology Solutions builds AI products and custom agentic workflows for professionals whose work runs on
-          documents. Our agents handle the reading, organizing and first drafts, so your experts spend their time on
-          judgment.
+          Tide Technology Solutions designs and builds custom AI agents that take repetitive, time-consuming work off
+          your team’s plate, so your business gets more done without adding headcount. Your people stay in control of
+          the decisions that matter.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" class="btn btn-primary">Get in touch</a>
-          <a href="#products" class="btn btn-ghost">Our products</a>
+          <a href="/contact" class="btn btn-primary">Book a consultation</a>
+          <a href="#what-we-automate" class="btn btn-ghost">See what we automate</a>
         </div>
       </div>
 
-      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1" role="img" aria-label="AI reviews pages, cites facts, flags conflicts and drafts. Experts weigh evidence, form opinions and approve.">
-        <div class="rounded-2xl border border-line bg-surface p-6">
-          <p class="eyebrow">AI does the reading</p>
-          <ul class="mt-4 space-y-2.5 text-sm">
-            {reading.map((r) => (
-              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-accent"></span>{r}</li>
-            ))}
-          </ul>
+      <div class="rounded-2xl border border-line bg-surface p-6 shadow-sm" role="img" aria-label="Example agent run: a new website lead is researched, the CRM is updated, an existing account is spotted and a follow-up email is drafted for approval.">
+        <div class="flex items-center justify-between">
+          <p class="eyebrow">Agent run</p>
+          <span class="flex items-center gap-2 text-xs text-muted"><span class="pulse h-2 w-2 rounded-full bg-accent"></span>Live</span>
         </div>
-        <div class="rounded-2xl bg-deep p-6 text-white">
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/70">Experts do the reasoning</p>
-          <ul class="mt-4 space-y-2.5 text-sm">
-            {reasoning.map((r) => (
-              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-white"></span>{r}</li>
-            ))}
-          </ul>
+        <ol class="mt-5 space-y-4">
+          {run.map((s, i) => (
+            <li class="step flex gap-3" style={`--i:${i}`}>
+              <span
+                class:list={[
+                  'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[0.65rem] font-bold',
+                  s.state === 'done' && 'bg-accent-soft text-accent',
+                  s.state === 'flag' && 'flag',
+                  s.state === 'wait' && 'bg-brand text-brand-ink',
+                ]}
+                aria-hidden="true"
+              >{s.state === 'done' ? '✓' : s.state === 'flag' ? '!' : '→'}</span>
+              <div>
+                <p class="text-sm font-medium">{s.label}</p>
+                <p class="text-xs text-muted">{s.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <div class="mt-6 flex gap-2 border-t border-line pt-5" aria-hidden="true">
+          <span class="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-ink">Approve &amp; send</span>
+          <span class="rounded-full border border-line px-3 py-1.5 text-xs font-semibold">Edit</span>
         </div>
       </div>
     </div>
@@ -91,76 +156,19 @@ const examples = ['Medical records review', 'Claims files', 'Compliance reviews'
     </div>
   </section>
 
-  <!-- Problem -->
-  <section class="container-page mt-24 grid gap-10 md:grid-cols-2 md:items-end">
-    <div>
-      <p class="eyebrow">The problem</p>
-      <h2 class="mt-4 text-4xl sm:text-5xl">Your experts spend most of their day reading.</h2>
-    </div>
-    <p class="text-lg text-muted">
-      In professional services, the expensive part of the job, judgment, sits behind hours of reading, summarizing and
-      copying facts between documents. That groundwork is exactly what agentic AI does well, if it is built to be
-      checked.
-    </p>
-  </section>
-
-  <!-- Products -->
-  <section id="products" class="container-page mt-24 scroll-mt-24">
-    <p class="eyebrow">Products</p>
-    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">Purpose-built AI for specific professions.</h2>
-    <div class="mt-12 grid gap-6 md:grid-cols-[1.4fr_1fr]">
-      <a href="/casework" class="group flex flex-col rounded-3xl border border-line bg-surface p-8 transition-colors hover:border-accent">
-        <div class="flex items-center justify-between gap-4">
-          <h3 class="text-3xl">Casework</h3>
-          <span class="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent">Early access</span>
-        </div>
-        <p class="mt-3 text-muted">
-          Agentic document review and report preparation for vocational consultants and law firms. Casework reads the case
-          file, organizes the facts with citations and drafts the report for expert review.
-        </p>
-        <span class="mt-auto pt-6 text-sm font-semibold text-accent">Explore Casework <span class="inline-block transition-transform group-hover:translate-x-1">→</span></span>
-      </a>
-      <div class="flex flex-col justify-center rounded-3xl border border-dashed border-line p-8">
-        <h3 class="text-xl text-muted">More on the way</h3>
-        <p class="mt-2 text-sm text-muted">
-          We’re building more products for document-heavy professions. Have a workflow in mind?{" "}
-          <a href="/contact" class="font-semibold text-accent">Tell us about it.</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Custom -->
-  <section id="custom" class="container-page mt-24 scroll-mt-24">
+  <!-- How we build -->
+  <section id="how-we-build" class="container-page mt-24 scroll-mt-24">
     <div class="grid gap-10 md:grid-cols-2 md:items-end">
       <div>
-        <p class="eyebrow">Custom agentic workflows</p>
-        <h2 class="mt-4 text-4xl sm:text-5xl">Your process, with agents doing the groundwork.</h2>
+        <p class="eyebrow">How we build</p>
+        <h2 class="mt-4 text-4xl sm:text-5xl">AI your business can trust.</h2>
       </div>
       <p class="text-lg text-muted">
-        If your team reviews documents and produces work from them, we can build an agentic workflow around your
-        process, templates and security requirements.
+        Agentic AI is only useful if it’s reliable. Every workflow we build follows the same principles, whether it runs
+        a single task or a whole department’s process.
       </p>
     </div>
-    <ol class="mt-12 grid gap-6 md:grid-cols-3">
-      {approach.map((s, i) => (
-        <li class="rounded-2xl border border-line bg-surface p-6">
-          <span class="font-serif text-3xl text-accent">0{i + 1}</span>
-          <h3 class="mt-4 text-xl">{s.title}</h3>
-          <p class="mt-2 text-muted">{s.body}</p>
-        </li>
-      ))}
-    </ol>
-    <ul class="mt-8 flex flex-wrap gap-2">
-      {examples.map((e) => <li class="rounded-full border border-line bg-surface px-3 py-1.5 text-sm text-muted">{e}</li>)}
-    </ul>
-  </section>
-
-  <!-- Principles -->
-  <section class="container-page mt-24">
-    <p class="eyebrow">How we build</p>
-    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">AI you can put your name behind.</h2>
-    <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+    <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
       {principles.map((p) => (
         <div class="border-t border-line pt-6">
           <h3 class="text-xl">{p.title}</h3>
@@ -169,6 +177,100 @@ const examples = ['Medical records review', 'Claims files', 'Compliance reviews'
       ))}
     </div>
     <a href="/security" class="mt-10 inline-block text-sm font-semibold text-accent">Read about security &amp; compliance →</a>
+  </section>
+
+  <!-- Problem -->
+  <section class="container-page mt-24 grid gap-10 md:grid-cols-2 md:items-end">
+    <div>
+      <p class="eyebrow">The problem</p>
+      <h2 class="mt-4 text-4xl sm:text-5xl">Your team is doing work software should be doing.</h2>
+    </div>
+    <p class="text-lg text-muted">
+      Retyping data between systems. Chasing updates. Sorting inboxes. Building the same report every week. None of it
+      needs your people’s talent, but it eats their time, slows your business down and makes growth mean more hiring.
+    </p>
+  </section>
+
+  <!-- What we automate -->
+  <section id="what-we-automate" class="container-page mt-24 scroll-mt-24">
+    <p class="eyebrow">What we automate</p>
+    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">If it’s repetitive, an agent can probably help.</h2>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {useCases.map((u) => (
+        <div class="rounded-2xl border border-line bg-surface p-6">
+          <h3 class="text-xl">{u.title}</h3>
+          <p class="mt-2 text-muted">{u.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Why agentic -->
+  <section class="container-page mt-24">
+    <p class="eyebrow">Why agentic AI</p>
+    <h2 class="mt-4 max-w-3xl text-4xl sm:text-5xl">Automation that handles the messy parts, not just the tidy ones.</h2>
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      <div class="rounded-3xl border border-line p-8">
+        <p class="text-sm font-semibold text-muted">Traditional automation</p>
+        <ul class="mt-5 space-y-3">
+          {compare.old.map((c) => <li class="flex gap-3"><span class="text-muted" aria-hidden="true">–</span><span>{c}</span></li>)}
+        </ul>
+      </div>
+      <div class="rounded-3xl border border-accent bg-accent-soft/60 p-8">
+        <p class="text-sm font-semibold text-accent">Agentic workflows</p>
+        <ul class="mt-5 space-y-3">
+          {compare.agentic.map((c) => <li class="flex gap-3"><span class="text-accent" aria-hidden="true">✓</span><span>{c}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="how-we-work" class="container-page mt-24 scroll-mt-24">
+    <div class="grid gap-10 md:grid-cols-2 md:items-end">
+      <div>
+        <p class="eyebrow">How we work</p>
+        <h2 class="mt-4 text-4xl sm:text-5xl">Start with one workflow. Prove it. Expand.</h2>
+      </div>
+      <p class="text-lg text-muted">
+        No big-bang transformation projects. We start where the time savings are clearest, show results quickly and
+        build from there.
+      </p>
+    </div>
+    <ol class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {process.map((s, i) => (
+        <li class="rounded-2xl border border-line bg-surface p-6">
+          <span class="font-serif text-3xl text-accent">0{i + 1}</span>
+          <h3 class="mt-4 text-xl">{s.title}</h3>
+          <p class="mt-2 text-muted">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="container-page mt-24 scroll-mt-24">
+    <p class="eyebrow">Our products</p>
+    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">Ready-made agents for specific industries.</h2>
+    <div class="mt-12 grid gap-6 md:grid-cols-[1.4fr_1fr]">
+      <a href="/casework" class="group flex flex-col rounded-3xl border border-line bg-surface p-8 transition-colors hover:border-accent">
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="text-3xl">Casework</h3>
+          <span class="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent">Early access</span>
+        </div>
+        <p class="mt-3 text-muted">
+          Agentic AI for case-based work, built for vocational consulting firms and law firms.
+        </p>
+        <span class="mt-auto pt-6 text-sm font-semibold text-accent">Explore Casework <span class="inline-block transition-transform group-hover:translate-x-1">→</span></span>
+      </a>
+      <div class="flex flex-col justify-center rounded-3xl border border-dashed border-line p-8">
+        <h3 class="text-xl text-muted">More on the way</h3>
+        <p class="mt-2 text-sm text-muted">
+          We’re building more products for industries with repeatable workflows. Have one in mind?{' '}
+          <a href="/contact" class="font-semibold text-accent">Tell us about it.</a>
+        </p>
+      </div>
+    </div>
   </section>
 
   <CTA />
@@ -183,5 +285,29 @@ const examples = ['Medical records review', 'Claims files', 'Compliance reviews'
       radial-gradient(ellipse 50% 60% at 80% 20%, var(--accent-soft), transparent 70%),
       radial-gradient(ellipse 40% 50% at 10% 0%, var(--accent-soft), transparent 70%);
     opacity: 0.9;
+  }
+  .flag {
+    background: #fef3c7;
+    color: #b45309;
+  }
+  @media (prefers-color-scheme: dark) {
+    .flag {
+      background: rgb(251 191 36 / 0.15);
+      color: #fbbf24;
+    }
+  }
+  .step {
+    animation: step-in 0.5s ease-out both;
+    animation-delay: calc(var(--i) * 0.35s + 0.2s);
+  }
+  @keyframes step-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+  .pulse {
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    50% { opacity: 0.35; }
   }
 </style>

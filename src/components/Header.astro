@@ -2,8 +2,9 @@
 import Logo from './Logo.astro';
 
 const links = [
+  { href: '/#what-we-automate', label: 'What we automate' },
+  { href: '/#how-we-work', label: 'How we work' },
   { href: '/casework', label: 'Casework' },
-  { href: '/#custom', label: 'Custom workflows' },
   { href: '/security', label: 'Security' },
   { href: '/about', label: 'About' },
 ];
@@ -15,7 +16,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
   <div class="container-page flex h-16 items-center justify-between gap-4">
     <a href="/" aria-label="Tide Technology Solutions home"><Logo /></a>
 
-    <nav class="hidden md:flex items-center gap-7 text-sm" aria-label="Main">
+    <nav class="hidden lg:flex items-center gap-7 text-sm" aria-label="Main">
       {links.map((l) => (
         <a
           href={l.href}
@@ -26,7 +27,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
       <a href="/contact" class="btn btn-primary !py-2">Get in touch</a>
     </nav>
 
-    <details class="md:hidden relative group">
+    <details class="lg:hidden relative group">
       <summary class="list-none cursor-pointer rounded-full border border-line px-4 py-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
         Menu
       </summary>
