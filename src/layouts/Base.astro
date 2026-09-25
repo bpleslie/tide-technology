@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Font } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -34,12 +35,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:image" content={new URL("/og.png", Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
+    <Font cssVariable="--font-inter" preload={[{ weight: "400", style: "normal" }]} />
+    <Font cssVariable="--font-fraunces" preload={[{ weight: "400", style: "normal" }]} />
 
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',

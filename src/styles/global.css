@@ -45,8 +45,8 @@
   --color-brand-ink: var(--brand-ink);
   --color-deep: var(--deep);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
 }
 
 @layer base {
