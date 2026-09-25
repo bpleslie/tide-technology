@@ -6,11 +6,11 @@ const trust = ['Built around your tools', 'You approve what matters', 'Secure & 
 
 // Illustrative agent run for the hero. Fictional sample data.
 const run = [
-  { label: 'New lead from your website', detail: 'Contact form · 2 minutes ago', state: 'done' },
-  { label: 'Researched the company', detail: 'Industry, size, location, recent news', state: 'done' },
-  { label: 'Updated your CRM', detail: 'Created contact and deal, assigned owner', state: 'done' },
-  { label: 'Spotted an existing account', detail: 'Matched a past customer from 2024', state: 'flag' },
-  { label: 'Drafted a follow-up email', detail: 'Waiting for your approval', state: 'wait' },
+  { label: 'Pulled month-end data', detail: '3 bank accounts, AP ledger, 2 company cards', state: 'done' },
+  { label: 'Matched 1,251 of 1,284 transactions', detail: 'Bank, ledger and receipts reconciled', state: 'done' },
+  { label: 'Investigated 33 exceptions', detail: '31 resolved: timing differences and bank fees', state: 'done' },
+  { label: 'Found 2 duplicate vendor payments', detail: '$18,420 paid twice. Refund request drafted', state: 'flag' },
+  { label: 'Close summary ready', detail: '2 items need your decision', state: 'wait' },
 ];
 
 const principles = [
@@ -62,8 +62,8 @@ const useCases = [
     body: 'Recurring reports assembled from your data and written up in your format, ready for a quick look instead of a lost afternoon.',
   },
   {
-    title: 'Operations & scheduling',
-    body: 'Reminders, status updates, handoffs and scheduling handled automatically, with people looped in when needed.',
+    title: 'Finance & reconciliation',
+    body: 'Transactions matched across bank accounts, ledgers and receipts, with exceptions investigated and errors like duplicate payments caught before they cost you.',
   },
 ];
 
@@ -114,9 +114,12 @@ const process = [
         </div>
       </div>
 
-      <div class="rounded-2xl border border-line bg-surface p-6 shadow-sm" role="img" aria-label="Example agent run: a new website lead is researched, the CRM is updated, an existing account is spotted and a follow-up email is drafted for approval.">
+      <div class="rounded-2xl border border-line bg-surface p-6 shadow-sm" role="img" aria-label="Example agent run: a month-end reconciliation matches 1,251 of 1,284 transactions, investigates 33 exceptions, finds $18,420 in duplicate vendor payments and prepares a close summary for approval.">
         <div class="flex items-center justify-between">
-          <p class="eyebrow">Agent run</p>
+          <div>
+            <p class="eyebrow">Agent run</p>
+            <p class="mt-1 font-serif text-lg">Month-end reconciliation</p>
+          </div>
           <span class="flex items-center gap-2 text-xs text-muted"><span class="pulse h-2 w-2 rounded-full bg-accent"></span>Live</span>
         </div>
         <ol class="mt-5 space-y-4">
@@ -139,8 +142,8 @@ const process = [
           ))}
         </ol>
         <div class="mt-6 flex gap-2 border-t border-line pt-5" aria-hidden="true">
-          <span class="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-ink">Approve &amp; send</span>
-          <span class="rounded-full border border-line px-3 py-1.5 text-xs font-semibold">Edit</span>
+          <span class="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-ink">Approve close</span>
+          <span class="rounded-full border border-line px-3 py-1.5 text-xs font-semibold">Review exceptions</span>
         </div>
       </div>
     </div>
