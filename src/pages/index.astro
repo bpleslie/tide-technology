@@ -6,11 +6,11 @@ const trust = ['Built around your tools', 'You approve what matters', 'Secure & 
 
 // Illustrative agent run for the hero. Fictional sample data.
 const run = [
-  { label: 'Pulled month-end data', detail: '3 bank accounts, AP ledger, 2 company cards', state: 'done' },
-  { label: 'Matched 1,251 of 1,284 transactions', detail: 'Bank, ledger and receipts reconciled', state: 'done' },
-  { label: 'Investigated 33 exceptions', detail: '31 resolved: timing differences and bank fees', state: 'done' },
-  { label: 'Found 2 duplicate vendor payments', detail: '$18,420 paid twice. Refund request drafted', state: 'flag' },
-  { label: 'Close summary ready', detail: '2 items need your decision', state: 'wait' },
+  { label: 'Reviewed 412 open invoices', detail: '$1.2M outstanding across 186 customers', state: 'done' },
+  { label: 'Found 157 overdue', detail: 'Checked payment history, emails and CRM notes', state: 'done' },
+  { label: 'Drafted 148 personalized reminders', detail: 'Tone matched to each customer relationship', state: 'done' },
+  { label: 'Flagged 9 at-risk accounts', detail: '$286,400 overdue 60+ days, 3 open disputes', state: 'flag' },
+  { label: 'Ready for your review', detail: '148 reminders to send, 9 escalations', state: 'wait' },
 ];
 
 const principles = [
@@ -62,8 +62,8 @@ const useCases = [
     body: 'Recurring reports assembled from your data and written up in your format, ready for a quick look instead of a lost afternoon.',
   },
   {
-    title: 'Finance & reconciliation',
-    body: 'Transactions matched across bank accounts, ledgers and receipts, with exceptions investigated and errors like duplicate payments caught before they cost you.',
+    title: 'Finance & collections',
+    body: 'Overdue invoices chased, payments reconciled and at-risk accounts flagged, so cash comes in faster and errors get caught early.',
   },
 ];
 
@@ -114,11 +114,11 @@ const process = [
         </div>
       </div>
 
-      <div class="rounded-2xl border border-line bg-surface p-6 shadow-sm" role="img" aria-label="Example agent run: a month-end reconciliation matches 1,251 of 1,284 transactions, investigates 33 exceptions, finds $18,420 in duplicate vendor payments and prepares a close summary for approval.">
+      <div class="rounded-2xl border border-line bg-surface p-6 shadow-sm" role="img" aria-label="Example agent run: an accounts receivable sweep reviews 412 open invoices, finds 157 overdue, drafts 148 personalized reminders and flags 9 at-risk accounts worth $286,400 for review.">
         <div class="flex items-center justify-between">
           <div>
             <p class="eyebrow">Agent run</p>
-            <p class="mt-1 font-serif text-lg">Month-end reconciliation</p>
+            <p class="mt-1 font-serif text-lg">Accounts receivable sweep</p>
           </div>
           <span class="flex items-center gap-2 text-xs text-muted"><span class="pulse h-2 w-2 rounded-full bg-accent"></span>Live</span>
         </div>
@@ -142,8 +142,8 @@ const process = [
           ))}
         </ol>
         <div class="mt-6 flex gap-2 border-t border-line pt-5" aria-hidden="true">
-          <span class="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-ink">Approve close</span>
-          <span class="rounded-full border border-line px-3 py-1.5 text-xs font-semibold">Review exceptions</span>
+          <span class="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-ink">Approve &amp; send</span>
+          <span class="rounded-full border border-line px-3 py-1.5 text-xs font-semibold">Review escalations</span>
         </div>
       </div>
     </div>
