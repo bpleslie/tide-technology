@@ -2,6 +2,9 @@
 import Base from '../../layouts/Base.astro';
 import Pipeline from '../../components/Pipeline.astro';
 import CTA from '../../components/CTA.astro';
+import CaseworkLockup from '../../components/CaseworkLockup.astro';
+import ReadingDemo from '../../components/ReadingDemo.astro';
+import ConflictPair from '../../components/ConflictPair.astro';
 
 const steps = [
   {
@@ -29,25 +32,32 @@ const features = [
 ---
 
 <Base
+  product="casework"
+  ogImage="/casework/og.png"
   title="Casework"
   description="Casework by Tide Technology Solutions: AI agents that review case files and prepare cited report drafts for vocational consultants and law firms, saving hours on every case."
 >
   <section class="relative overflow-hidden">
     <div class="wash" aria-hidden="true"></div>
-    <div class="container-page relative pt-20 pb-16 sm:pt-28">
-      <p class="eyebrow">Casework · by Tide Technology Solutions</p>
-      <h1 class="mt-5 max-w-4xl text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
-        AI does the reading.<br />
-        <span class="italic text-accent">Experts do the reasoning.</span>
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg text-muted">
-        Casework is an agentic AI system for document review and report preparation. It reads the whole case file,
-        organizes the facts with citations and drafts the report, so vocational consultants and legal teams get hours
-        back on every case.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/contact" class="btn btn-primary">Book a Casework demo</a>
-        <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+    <div class="container-page relative grid items-center gap-x-14 gap-y-16 pt-20 pb-20 sm:pt-28 lg:grid-cols-[1.25fr_1fr]">
+      <div class="min-w-0">
+        <CaseworkLockup />
+        <h1 class="mt-8 max-w-4xl text-5xl leading-[1.05] sm:text-6xl lg:text-[3.5rem]">
+          AI does the reading.<br />
+          <span class="italic text-accent">Experts do the reasoning.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg text-muted">
+          Casework is an agentic AI system for document review and report preparation. It reads the whole case file,
+          organizes the facts with citations and drafts the report, so vocational consultants and legal teams get hours
+          back on every case.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Book a Casework demo</a>
+          <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+        </div>
+      </div>
+      <div class="min-w-0">
+        <ReadingDemo />
       </div>
     </div>
     <div class="container-page relative pb-8">
@@ -67,6 +77,18 @@ const features = [
         </li>
       ))}
     </ol>
+  </section>
+
+  <section class="container-page mt-24">
+    <p class="eyebrow">When records disagree</p>
+    <h2 class="mt-4 max-w-2xl text-4xl sm:text-5xl">It tells you. It does not average.</h2>
+    <p class="mt-4 max-w-2xl text-lg text-muted">
+      Two documents describing the same restriction differently is the thing that changes an opinion. A summariser
+      splits the difference and nobody notices.
+    </p>
+    <div class="mt-12">
+      <ConflictPair />
+    </div>
   </section>
 
   <section class="container-page mt-24">

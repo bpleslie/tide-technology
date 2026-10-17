@@ -33,6 +33,37 @@
   }
 }
 
+/* Casework's pages wear Casework's colours: the product leads and Tide stands behind it, so the
+   page matches the app a prospect signs in to (casework.tide-technology.com). The values are the
+   app's own (`web/src/styles.css` in the casework repository); copy them from there, not from here.
+   The whole page switches, header button included, so no page shows two accents. */
+[data-product="casework"] {
+  --accent: #1f5fd6;
+  --brand: #1f5fd6;
+  --brand-hover: #1a4fb3;
+  --brand-ink: #ffffff;
+  /* Navy rather than the accent, so the closing band does not read as a slab of interface blue. */
+  --deep: #1b3f8a;
+  --accent-soft: #e4ecfb;
+  --ok: #17794a;
+  --warn: #9a6400;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-product="casework"] {
+    --accent: #6fa0ff;
+    --brand: #6fa0ff;
+    --brand-hover: #8db4ff;
+    /* White on #6fa0ff is about 2.4:1; the app uses dark text on its dark-mode buttons for that reason. */
+    --brand-ink: #101216;
+    --deep: #1b3f8a;
+    --accent-soft: #18233a;
+    --ok: #4ec98a;
+    --warn: #e0ae53;
+  }
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import CTA from './CTA.astro';
+import CaseworkLockup from './CaseworkLockup.astro';
 
 interface Item { title: string; body: string }
 interface Props {
@@ -14,14 +15,17 @@ interface Props {
   outputs: Item[];
   before: string[];
   after: string[];
+  /** The page's link preview, from `public/casework/`. */
+  ogImage: string;
 }
 
 const p = Astro.props;
 ---
 
-<Base title={p.title} description={p.description}>
+<Base title={p.title} description={p.description} product="casework" ogImage={p.ogImage}>
   <section class="container-page pt-20 sm:pt-28">
-    <p class="eyebrow">{p.eyebrow}</p>
+    <CaseworkLockup />
+    <p class="eyebrow mt-8">{p.eyebrow}</p>
     <h1 class="mt-5 max-w-4xl text-5xl leading-[1.05] sm:text-6xl">{p.heading}</h1>
     <p class="mt-6 max-w-2xl text-lg text-muted">{p.intro}</p>
     <div class="mt-8 flex flex-wrap gap-3">

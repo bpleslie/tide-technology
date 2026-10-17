@@ -7,15 +7,20 @@ import { Font } from 'astro:assets';
 interface Props {
   title: string;
   description: string;
+  /** A product's pages wear the product's colours and share card (`global.css`). */
+  product?: 'casework';
+  /** The link preview, from `public/`; Tide's own card when not given. */
+  ogImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, product, ogImage = '/og.png' } = Astro.props;
+const themeColor = product === 'casework' ? '#1f5fd6' : '#9e1b32';
 const fullTitle = title === 'Tide Technology Solutions' ? title : `${title} | Tide Technology Solutions`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-product={product}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,14 +30,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#9e1b32" />
+    <meta name="theme-color" content={themeColor} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tide Technology Solutions" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <Font cssVariable="--font-inter" preload={[{ weight: "400", style: "normal" }]} />

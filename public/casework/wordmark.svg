@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 76" width="300" height="76">
+  <!-- Six pixels of clear space top and bottom. Cognito refuses a LOGO asset wider
+       than 4:1 and the lockup is 300x64, which is 4.69:1. -->
+  <g transform="translate(0, 6)">
+  <rect width="64" height="64" rx="15" fill="#1f5fd6"/>
+  <g fill="#ffffff">
+    <rect x="18" y="16" width="30" height="4" rx="2" opacity=".42"/>
+    <rect x="18" y="25" width="22" height="4" rx="2" opacity=".42"/>
+    <rect x="12" y="32" width="4" height="10" rx="2"/>
+    <rect x="18" y="34" width="30" height="4" rx="2"/>
+    <rect x="18" y="43" width="18" height="4" rx="2" opacity=".42"/>
+  </g>
+  <text x="80" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, system-ui, sans-serif"
+        font-size="23" font-weight="640" letter-spacing="-0.6" fill="#16181d">Casework</text>
+  <text x="80" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, system-ui, sans-serif"
+        font-size="12.5" font-weight="400" letter-spacing="0.1" fill="#6b7280">by Tide Technology Solutions</text>
+  </g>
+</svg>
