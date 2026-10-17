@@ -1,0 +1,15 @@
+---
+// Casework's lockup: the mark, "Casework" and "by Tide Technology Solutions" together, as the app
+// shows it (`web/src/components/Wordmark.tsx` in the casework repository). Never narrower than
+// 200px: below that the byline is a grey smudge. The files are copies of the app's own.
+interface Props {
+  width?: number;
+}
+const { width = 250 } = Astro.props;
+const height = Math.round((width * 76) / 300);
+---
+
+<picture class="block">
+  <source srcset="/casework/wordmark-dark.svg" media="(prefers-color-scheme: dark)" />
+  <img src="/casework/wordmark.svg" alt="Casework by Tide Technology Solutions" width={width} height={height} />
+</picture>

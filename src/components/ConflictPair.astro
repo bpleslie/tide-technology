@@ -1,0 +1,68 @@
+---
+// Two records describing the same restriction differently: Casework shows both and says they
+// disagree. The same pair as the app's front page (`web/src/components/Landing.tsx` in the casework
+// repository). Synthetic.
+---
+
+<div class="conflict">
+  <article class="conflict-side">
+    <p class="conflict-src">IME — Alvarez, R. MD · page 14</p>
+    <p class="conflict-quote">“Lifting restricted to <mark>20 pounds</mark> occasionally.”</p>
+  </article>
+  <div class="conflict-mark" aria-hidden="true"><span>conflict</span></div>
+  <article class="conflict-side">
+    <p class="conflict-src">Treating physician · page 6</p>
+    <p class="conflict-quote">“No lifting over <mark>10 pounds</mark> at any time.”</p>
+  </article>
+</div>
+
+<style>
+  .conflict {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 14px;
+  }
+  @media (max-width: 760px) {
+    .conflict { grid-template-columns: 1fr; }
+  }
+  .conflict-side {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: 18px 19px;
+  }
+  .conflict-src {
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11.5px;
+  }
+  .conflict-quote {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .conflict-quote mark {
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--warn) 26%, transparent);
+    color: var(--ink);
+    padding: 1px 4px;
+    font-weight: 600;
+  }
+  .conflict-mark {
+    display: grid;
+    place-items: center;
+    color: var(--warn);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .conflict-mark span {
+    border: 1px dashed color-mix(in srgb, var(--warn) 55%, transparent);
+    border-radius: 999px;
+    padding: 6px 12px;
+    white-space: nowrap;
+  }
+</style>

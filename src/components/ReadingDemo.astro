@@ -1,0 +1,235 @@
+---
+// The product doing the one thing it does, on a loop: a page of a file, a line lighting up, and the
+// fact arriving with the document and page it came from. The same demonstration as the app's front
+// page (`web/src/components/ReadingDemo.tsx` in the casework repository), so a prospect sees the
+// same thing on both sides of the sign-in. Synthetic, and it says so.
+const findings = [
+  {
+    document: 'IME — Alvarez, R. MD',
+    page: 14,
+    line: 3,
+    quote: 'Lifting restricted to 20 pounds occasionally, 10 pounds frequently.',
+    fact: 'Lifting restricted to 20 lbs occasionally',
+  },
+  {
+    document: 'Employment history',
+    page: 3,
+    line: 6,
+    quote: 'Most recent position: warehouse order selector, 2019–2024.',
+    fact: 'Last worked as a warehouse order selector',
+  },
+  {
+    document: 'PT discharge summary',
+    page: 7,
+    line: 2,
+    quote: 'Patient unable to tolerate standing beyond 30 minutes without rest.',
+    fact: 'Cannot stand more than 30 minutes',
+  },
+  {
+    document: 'Occupational health note',
+    page: 2,
+    line: 8,
+    quote: 'Released to light duty effective 14 March, no overhead reaching.',
+    fact: 'Light duty from 14 March, no overhead reaching',
+  },
+];
+// Widths for the blurred-out lines, so the page looks like prose rather than a bar chart.
+const widths = [92, 78, 96, 64, 88, 71, 94, 59, 83, 90];
+const first = findings[0];
+---
+
+<div class="demo" data-reading-demo data-findings={JSON.stringify(findings)} role="img" aria-label="Casework reads a page of a synthetic case file and extracts a fact, with the document and page it came from.">
+  <div class="demo-doc">
+    <div class="demo-doc-bar">
+      <span class="demo-dot"></span>
+      <span class="demo-doc-name" data-name>{first.document}</span>
+      <span class="demo-doc-page" data-page>p. {first.page}</span>
+    </div>
+    <div class="demo-doc-body">
+      {widths.map((width, line) => (
+        <div class:list={['demo-line', { 'is-lit': line === first.line }]} data-line={line}>
+          <span class="demo-blur" style={`width: ${width}%`} hidden={line === first.line}></span>
+          <span class="demo-quote" hidden={line !== first.line}>{line === first.line ? first.quote : ''}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <figure class="demo-fact arriving" data-fact>
+    <figcaption class="demo-fact-head">Extracted</figcaption>
+    <p class="demo-fact-body" data-fact-body>{first.fact}</p>
+    <p class="demo-cite">
+      <span data-cite-doc>{first.document}</span>
+      <span class="demo-cite-page" data-cite-page>page {first.page}</span>
+    </p>
+  </figure>
+
+  <p class="demo-caption">Synthetic record. No real claimant data appears here.</p>
+</div>
+
+<script>
+  type Finding = { document: string; page: number; line: number; quote: string; fact: string };
+
+  for (const demo of document.querySelectorAll<HTMLElement>('[data-reading-demo]')) {
+    const findings: Finding[] = JSON.parse(demo.dataset.findings ?? '[]');
+    if (findings.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) continue;
+    const $ = (selector: string) => demo.querySelector<HTMLElement>(selector)!;
+    let index = 0;
+
+    const show = (finding: Finding) => {
+      $('[data-name]').textContent = finding.document;
+      $('[data-page]').textContent = `p. ${finding.page}`;
+      for (const row of demo.querySelectorAll<HTMLElement>('[data-line]')) {
+        const lit = Number(row.dataset.line) === finding.line;
+        // Removed and re-added, so the light-up animation runs again on the same row.
+        row.classList.remove('is-lit');
+        if (lit) void row.offsetWidth;
+        row.classList.toggle('is-lit', lit);
+        row.querySelector<HTMLElement>('.demo-blur')!.hidden = lit;
+        const quote = row.querySelector<HTMLElement>('.demo-quote')!;
+        quote.hidden = !lit;
+        quote.textContent = lit ? finding.quote : '';
+      }
+      const fact = $('[data-fact]');
+      fact.classList.remove('arriving');
+      void fact.offsetWidth;
+      fact.classList.add('arriving');
+      $('[data-fact-body]').textContent = finding.fact;
+      $('[data-cite-doc]').textContent = finding.document;
+      $('[data-cite-page]').textContent = `page ${finding.page}`;
+    };
+
+    window.setInterval(() => {
+      index = (index + 1) % findings.length;
+      show(findings[index]);
+    }, 3200);
+  }
+</script>
+
+<style>
+  .demo {
+    position: relative;
+    padding-bottom: 2.25rem;
+  }
+  .demo-doc {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 24px 60px -32px rgb(0 0 0 / 0.45);
+  }
+  .demo-doc-bar {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface) 92%, var(--bg));
+    padding: 11px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .demo-dot {
+    width: 8px;
+    height: 8px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .demo-doc-name {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .demo-doc-page {
+    margin-left: auto;
+    color: var(--muted);
+  }
+  .demo-doc-body {
+    display: grid;
+    gap: 11px;
+    padding: 18px 16px 22px;
+  }
+  .demo-line {
+    display: flex;
+    min-height: 12px;
+    align-items: center;
+  }
+  .demo-blur {
+    height: 9px;
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--ink) 11%, transparent);
+  }
+  .demo-blur[hidden],
+  .demo-quote[hidden] {
+    display: none;
+  }
+  .demo-line.is-lit {
+    margin: -6px -10px;
+    border-radius: 7px;
+    background: color-mix(in srgb, var(--accent) 13%, transparent);
+    box-shadow: inset 2px 0 0 var(--accent);
+    padding: 6px 10px;
+    animation: lightup 0.45s ease both;
+  }
+  .demo-quote {
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .demo-fact {
+    position: absolute;
+    right: -6px;
+    bottom: 0;
+    width: min(300px, 82%);
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+    padding: 13px 15px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 20px 44px -24px rgb(0 0 0 / 0.5);
+  }
+  .demo-fact.arriving {
+    animation: arrive 0.5s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+  }
+  .demo-fact-head {
+    margin: 0 0 6px;
+    color: var(--ok);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .demo-fact-body {
+    margin: 0 0 9px;
+    font-size: 14px;
+    font-weight: 550;
+    line-height: 1.4;
+  }
+  .demo-cite {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .demo-cite-page {
+    color: var(--accent);
+  }
+  .demo-caption {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 2px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 11.5px;
+  }
+  @keyframes lightup {
+    from { opacity: 0; transform: translateX(-4px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes arrive {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+</style>
